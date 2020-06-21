@@ -3,6 +3,8 @@ import pygame
 
 import enemy_master
 
+
+
 clock = pygame.time.Clock()
 surface = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
 
@@ -20,7 +22,7 @@ p = [
 em = enemy_master.Enemy_master(p)
 pygame.init()
 
-
+player = player.Char()
 def main():
     running = True
 
@@ -38,15 +40,22 @@ def main():
 
 def draw():
     surface.fill((0, 0, 0))#background
+<<<<<<< HEAD
 
     em.draw(surface)
+=======
+    player.draw(surface)
+>>>>>>> player
     pygame.display.flip()
 
 
-
 def update():
+<<<<<<< HEAD
     em.update()
 
+=======
+    player.update()
+>>>>>>> player
 
 
 if __name__ == "__main__":
