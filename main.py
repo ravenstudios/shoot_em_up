@@ -2,7 +2,7 @@ from constants import *
 import pygame
 
 import enemy_master
-
+import player
 
 
 clock = pygame.time.Clock()
