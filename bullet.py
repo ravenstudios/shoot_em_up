@@ -1,26 +1,24 @@
 from constants import *
 import pygame
-import player
+
+
 class Bullet:
-    def __init__(self):
-        self.y = GAME_HEIGHT - BLOCK_SIZE
-        self.x = GAME_WIDTH // 2
-        self.width = BLOCK_SIZE
+    def __init__(self, x, y):
+        self.y = x
+        self.x = y
+        self.width = BLOCK_SIZE // 4
         self.height = BLOCK_SIZE
         self.speed = 5
         self.color = YELLOW
-        self.count = 0
-        self.color_index = [RED, GREEN, BLUE, (127, 255, 0), (255, 255, 255)]
-        self.score = 0
         self.hit_box = pygame.Rect(self.y, self.x, self.width, self.height)
+        self.can_delete = False
+
+
 
     def update(self):
-        self.key_input()
+        self.hit_box = self.hit_box.move(0, -self.speed)
+        if self.hit_box.y + self.hit_box.height  < 0:
+            self.can_delete = True
+
     def draw(self, surface):
-        pygame.draw.rect(surface, self.color, (self.x, self.y, self.width, self.height))
-
-    def key_input(self):
-        keys = pygame.key.get_pressed()
-
-        if keys[pygame.K_SPACE]:
-            self.y -= self.speed
+        pygame.draw.rect(surface, self.color, self.hit_box)
