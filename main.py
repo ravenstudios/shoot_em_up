@@ -40,22 +40,16 @@ def main():
 
 def draw():
     surface.fill((0, 0, 0))#background
-<<<<<<< HEAD
 
     em.draw(surface)
-=======
     player.draw(surface)
->>>>>>> player
     pygame.display.flip()
 
 
 def update():
-<<<<<<< HEAD
     em.update()
-
-=======
     player.update()
->>>>>>> player
+
 
 
 if __name__ == "__main__":
