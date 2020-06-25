@@ -11,7 +11,6 @@ class Bullet_manager():
         self.last_shot = 0
 
     def update(self, player):
-        print(pygame.time.get_ticks())
         self.key_input(player)
         for b in self.bullets:
             b.update()
@@ -24,6 +23,7 @@ class Bullet_manager():
             b.draw(surface)
 
     def add_bullet(self, player):
+
         self.bullets.append(bullet.Bullet(player.hit_box.x, player.hit_box.y))
 
     def key_input(self, player):

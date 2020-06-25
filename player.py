@@ -2,39 +2,38 @@ from constants import *
 import pygame
 class Char:
     def __init__(self):
-        self.y = GAME_HEIGHT - BLOCK_SIZE
         self.x = GAME_WIDTH // 2
-        self.width = BLOCK_SIZE
-        self.height = BLOCK_SIZE
+        self.y = GAME_HEIGHT - BLOCK_SIZE
+
+        self.width, self.height = BLOCK_SIZE, BLOCK_SIZE
+
         self.speed = 5
         self.color = GREEN
-        self.count = 0
-        self.color_index = [RED, GREEN, BLUE, (127, 255, 0), (255, 255, 255)]
-        self.score = 0
-        self.hit_box = pygame.Rect(self.y, self.x, self.width, self.height)
+
+        self.hit_box = pygame.Rect(self.x, self.y, self.width, self.height)
 
     def update(self):
         self.key_input()
 
     def draw(self, surface):
-        pygame.draw.rect(surface, self.color, (self.x, self.y, self.width, self.height))
+        pygame.draw.rect(surface, self.color, self.hit_box)
 
     def key_input(self):
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_UP]:
-            if self.y > 0:
-                self.y += -self.speed
+            if self.hit_box.y > 0:
+                self.hit_box.y += -self.speed
 
         if keys[pygame.K_DOWN]:
-            if self.y < GAME_HEIGHT - self.height:
-                self.y += self.speed
+            if self.hit_box.y < GAME_HEIGHT - self.hit_box.height:
+                self.hit_box.y += self.speed
 
 
         if keys[pygame.K_LEFT]:
-            if self.x > 0:
-                self.x += -self.speed
+            if self.hit_box.x > 0:
+                self.hit_box.x += -self.speed
 
         if keys[pygame.K_RIGHT]:
-            if self.x < GAME_WIDTH - self.width:
-                self.x += self.speed
+            if self.hit_box.x < GAME_WIDTH - self.hit_box.width:
+                self.hit_box.x += self.speed

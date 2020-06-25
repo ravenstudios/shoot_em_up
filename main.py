@@ -3,6 +3,7 @@ import pygame
 
 import enemy_master
 import player
+import bullet_manager
 
 
 clock = pygame.time.Clock()
@@ -20,9 +21,13 @@ p = [
     (800, 800)
 ]
 em = enemy_master.Enemy_master(p)
+bm = bullet_manager.Bullet_manager()
+player = player.Char()
+
 pygame.init()
 
-player = player.Char()
+
+
 def main():
     running = True
 
@@ -43,12 +48,15 @@ def draw():
 
     em.draw(surface)
     player.draw(surface)
+    bm.draw(surface)
+    
     pygame.display.flip()
 
 
 def update():
     em.update()
     player.update()
+    bm.update(player)
 
 
 
