@@ -4,7 +4,7 @@ import pygame
 import enemy_master
 import player
 import bullet_manager
-
+import stars
 
 clock = pygame.time.Clock()
 surface = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
@@ -23,6 +23,7 @@ p = [
 em = enemy_master.Enemy_master(p)
 bm = bullet_manager.Bullet_manager()
 player = player.Char()
+stars = stars.Star_Manager()
 
 pygame.init()
 
@@ -45,11 +46,12 @@ def main():
 
 def draw():
     surface.fill((0, 0, 0))#background
-
+    stars.draw(surface)
     em.draw(surface)
     player.draw(surface)
     bm.draw(surface)
-    
+
+
     pygame.display.flip()
 
 
@@ -57,6 +59,7 @@ def update():
     em.update()
     player.update()
     bm.update(player)
+    stars.update()
 
 
 
