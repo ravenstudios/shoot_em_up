@@ -45,7 +45,7 @@ def main():
 
 
 def draw():
-    surface.fill((0, 0, 0))#background
+    surface.fill((0, 0, 10))#background
     stars.draw(surface)
     em.draw(surface)
     player.draw(surface)
